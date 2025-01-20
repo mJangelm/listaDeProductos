@@ -1,0 +1,24 @@
+
+<section>
+    <div class="text-center my-1">
+    <button  class="btn btn-primary" id="boton1" (click)="mostrarFiltro()">Buscar</button>
+    </div>
+    @if (filtro == true) {
+    <app-product-filter (envioFiltroNombre)="mostrarBusqueda($event)"></app-product-filter>
+    }
+</section>
+<br>
+<section>
+    <div class="text-center my-1">
+        <button class="btn btn-primary" (click)="mostrarAlta()">Dar de alta a producto</button>
+      </div>
+    @if (alta == true) {
+     <app-product-form (envioFormulario)="mostrarArray($event)"></app-product-form>
+    }
+    </section>
+    <br>
+<section>
+<app-product-card [elemento]="producto" [elementos]="productos" (envioEliminar)="eliminar($event)"></app-product-card>
+</section>
+
+

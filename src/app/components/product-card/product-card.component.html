@@ -1,0 +1,30 @@
+<div class="container mt-4">
+<h1 class="text-center mb-4">Lista de Productos</h1>
+<table class="table table-striped table-hover text-center">
+<thead class="table-dark">
+<tr>
+<th>Nombre</th>
+<th>Descripción</th>
+<th>Categoría</th>
+<th>Precio</th>
+<th>Imagen del producto</th>
+<th>Id de referencia</th>
+<th>Opciones</th>
+</tr>
+</thead>
+<tbody>
+@for(elemento of elementos; track elemento._id) {
+<tr>
+<td class="text-center">{{elemento.name}}</td>
+<td class="text-center" style="max-width: 300px;">{{elemento.description}}</td>
+<td>{{elemento.category}}</td>
+<td >{{elemento.price}} €</td>
+<td class="text-center"><img src="{{elemento.image}}" alt="Imagen del producto" class="img-fluid" style="max-width: 150px;"></td>
+<td>{{elemento._id}}</td>
+<td><button (click)="eliminar(elemento)">Eliminar</button></td>
+</tr>
+}
+
+</tbody>
+</table>
+</div>

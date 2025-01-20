@@ -1,0 +1,68 @@
+<section class="d-flex justify-content-center align-items-center ">
+<form [formGroup]="modelForm" (ngSubmit)="getDataForm()" class="w-50 p-4 border rounded shadow">
+<h2 class="d-flex justify-content-center ">Alta de producto</h2>
+<div class="mb-3">
+<label for="name" class="form-label">Nombre del producto</label>
+<input type="text" name="name" id="name" placeholder="Introduce el nombre del producto" formControlName="name" class="form-control">
+@if(checkControl('name','required')) {
+<p class="error">Campo requerido</p>
+}
+@if ((checkControl('name','minlength'))) {
+    <p class="error">El nombre debe de tener al menos 3 caracteres</p>
+}
+@if ((checkControl('name','maxlength'))) {
+    <p class="error">El nombre debe de tener menos de 40 caracteres</p>
+}
+</div>
+
+<div class="mb-3">
+<label for="description" class="form-label">Descripción</label>
+<input type="text" name="description" id="description" placeholder="Introduce tu descripción" formControlName="description" class="form-control">
+@if(checkControl('description','required')) {
+    <p class="error">Campo requerido</p>
+    }
+</div>
+
+<div class="mb-3">
+<label for="price" class="form-label">Precio</label>
+<input type="number" name="price" id="price" placeholder="Introduce tu precio" formControlName="price" class="form-control">
+@if(checkControl('price','required')) {
+    <p class="error">Campo requerido</p>
+    }
+
+@if(checkControl('price','min')) {
+<p class="error">Introduzca un precio superior a 0</p>
+}
+
+</div>
+
+<div class="mb-3">
+<label for="image" class="form-label">Imagen</label>
+<input type="text" name="image" id="image" placeholder="Introduce la URL de la imagen" formControlName="image" class="form-control">
+@if(checkControl('image','required')) {
+<p class="error">Campo requerido</p>
+}
+
+@if ((checkControl('image','pattern'))) {
+<p class="error">Introduzca un enlace con el formato http://direccion/imagen.(png|jpg|jpeg|gif|webp|svg)</p>
+}
+
+</div>
+
+<div class="mb-3">
+<label for="category" class="form-label">Categoría</label>
+<input type="text" name="category" id="category" placeholder="Introduce la categoría" formControlName="category" class="form-control">
+@if(checkControl('category','required')) {
+    <p class="error">Campo requerido</p>
+}
+@if(checkControl('category','pattern')) {
+<p class="error">Campos disponibles: niño, hombre y mujer</p>
+}
+
+</div>
+
+<div class="text-center">
+<input type="submit" value="Enviar" class="btn btn-primary" [disabled]="!modelForm.valid">
+</div>
+</form>
+</section>

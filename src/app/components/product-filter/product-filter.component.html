@@ -1,0 +1,63 @@
+
+<section class="d-flex justify-content-center align-items-center ">
+<form [formGroup]="modelForm" (ngSubmit)="getDataForm()" class="w-50 p-4 border rounded shadow">
+    <h2 class="d-flex justify-content-center ">Búsqueda por filtros</h2>
+
+<div class="mb-3">
+<label for="name" class="form-label">Buscar por nombre</label>
+<input type="text" name="name" id="name" formControlName="name" class="form-control">
+@if(checkControl('name','required')) {
+    <p class="error">Campo requerido</p>
+    }
+    @if ((checkControl('name','minlength'))) {
+        <p class="error">El nombre debe de tener al menos 3 caracteres</p>
+    }
+    @if ((checkControl('name','maxlength'))) {
+        <p class="error">El nombre debe de tener menos de 40 caracteres</p>
+    }
+</div>
+
+<div class="mb-3">
+<label for="description" class="form-label">Buscar por descripcion</label>
+<input type="text" name="description" id="description" formControlName="description" class="form-control">
+@if(checkControl('description','required')) {
+    <p class="error">Campo requerido</p>
+    }
+</div>
+
+
+<div class="mb-3">
+<label for="category" class="form-label">Buscar por categoria</label>
+<input type="text" name="category" id="category" formControlName="category" class="form-control">
+
+@if(checkControl('category','required')) {
+    <p class="error">Campo requerido</p>
+}
+@if(checkControl('category','pattern')) {
+<p class="error">Campos disponibles: niño, hombre y mujer</p>
+}
+
+</div>
+
+<div class="mb-3">
+<label for="price" class="form-label">Buscar por precio</label>
+<input type="number" name="price" id="price" formControlName="price" class="form-control">
+@if(checkControl('price','required')) {
+    <p class="error">Campo requerido</p>
+    }
+
+@if(checkControl('price','min')) {
+<p class="error">Introduzca un precio superior a 0</p>
+}
+</div>
+
+
+<div class="text-center">
+    
+    <input type="submit" value="Enviar" class="btn btn-primary" >
+    
+
+</div>
+</form>
+</section>
+
